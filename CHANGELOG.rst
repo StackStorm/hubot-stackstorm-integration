@@ -6,6 +6,11 @@ in development
 * Use Github Actions for tests.
 * Remove TravisCI.
 
+0.12.1
+------
+
+* Allow responding in a thread for the ack/result in slack (improvement) #237
+
 0.12.0
 ------
 

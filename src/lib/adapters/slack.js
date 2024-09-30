@@ -84,6 +84,11 @@ SlackAdapter.prototype.postData = function(data) {
     };
   }
 
+  //If extra.slack.thread_response is set, we will send the response in a thread (SLACK ONLY)
+  if (data.extra && data.extra.slack && data.extra.slack.thread_response) {
+    envelope.message = {"thread_ts": data.context.message.id};
+  }
+
   // Allow packs to specify arbitrary keys
   if (data.extra && data.extra.slack && data.extra.slack.attachments) {
     // Action:

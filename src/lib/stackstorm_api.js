@@ -331,6 +331,12 @@ StackStorm.prototype.sendAck = function (msg, res) {
     }
   }
 
+  // If ack.extra.slack.thread_response is set in the action-alias definition,
+  // then we will thread the ACK response message (SLACK ONLY)
+  if (res.extra && res.extra.slack && res.extra.slack.thread_response) {
+    msg.message.thread_ts = msg.message.id;
+  }
+
   if (res.message) {
     return msg.send(res.message + history);
   }
